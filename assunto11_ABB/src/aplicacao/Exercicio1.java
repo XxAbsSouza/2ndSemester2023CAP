@@ -15,6 +15,8 @@ public class Exercicio1 {
 			System.out.println(" 1 - Inserir");
 			System.out.println(" 2 - Apresenta ABB");
 			System.out.println(" 3 - Apresenta quantidade de nos");
+			System.out.println(" 4 - Pesquisa 1 se há o valor na ABB");
+			System.out.println(" 5 - Pesquisa 2 ");
 			
 			opcao = le.nextInt();
 			switch (opcao) {
@@ -34,10 +36,26 @@ public class Exercicio1 {
 			case 3:
 				System.out.println("Quantidade de nos da ABB = "+ abb.contaNos(abb.root, 0));
 				break;
+			case 4:
+				System.out.print("Informe valor a ser pesquisado: ");
+				info = le.nextInt();
+				if (abb.consulta(abb.root, info)) {
+					System.out.println("O valor está na ABB");
+				} else {
+					System.out.println("Valor nāo está na ABB");
+				}
+				break;
+			case 5:
+				System.out.print("Informe valor a ser pesquisado: ");
+				info = le.nextInt();
+				System.out.println("Quantidade de comparações: " + abb.contaColsuta(abb.root, info, 0));
+				break;
 			default:
 				System.out.println("Opcao invalida");
 			}
 		} while (opcao != 0);
+
+		le.close();
 
 	}
 

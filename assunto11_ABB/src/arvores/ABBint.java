@@ -19,7 +19,7 @@ public class ABBint {
 		}
 		else if (info < p.dado) 
 			p.esq= inserir (p.esq, info);
-		     else
+		else
 			p.dir=inserir(p.dir, info);	
 		return p;
 		}
@@ -32,11 +32,42 @@ public class ABBint {
 		}
 		return cont;
 	}
+
 	public void listaEmOrdem(ARVORE p) {
-		if (p!=null) {
+		if (p != null) {
 			listaEmOrdem(p.esq);
-			System.out.print(" "+ p.dado);
+			System.out.print(" " + p.dado);
 			listaEmOrdem(p.dir);
 		}
+	}
+	
+	public boolean consulta(ARVORE p, int info) {
+		if (p != null) {
+			if(info == p.dado)
+				return true;
+			else {
+				if (info < p.dado) 
+					return (consulta(p.esq, info));
+				else
+					return(consulta(p.dir, info));
+				}
+			} 
+			else
+				return false;
+		}
+
+		public int contaColsuta(ARVORE p, int info, int cont) {
+			if (p != null) {
+				cont++;
+				if (info == p.dado)
+					return cont;
+				else {
+					if (info < p.dado)
+						cont = contaColsuta(p.esq, info, cont);
+					else
+						cont = contaColsuta(p.dir, info, cont);
+				}
+			}
+			return cont;
 	}
 }
